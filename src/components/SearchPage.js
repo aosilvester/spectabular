@@ -1,6 +1,6 @@
 import React from "react";
 import axios from 'axios';
-import scraper from './Scrapetest'
+// import scraper from './Scrapetest'
 const cheerio = require('react-native-cheerio')
 
 // import "./style.css";
@@ -56,61 +56,61 @@ function createURL(){
 }
 
 
-// function scraper() {
-//   // console.log("scraper")
-//   var queryURL = createURL();
-//   console.log("scraping from url: " + queryURL)
-//   // axios.get(queryURL).then(function(response) {
-//   // }),
+function scraper() {
+  // console.log("scraper")
+  var queryURL = createURL();
+  console.log("scraping from url: " + queryURL)
+  // axios.get(queryURL).then(function(response) {
+  // }),
   
-//   axios.get(queryURL).then(function(response){
-//     var $ = cheerio.load(response.data)
-//     console.log("axios-ing")
-//     var results = [];
-//     $("body").each(function(i,element){
+  axios.get(queryURL).then(function(response){
+    var $ = cheerio.load(response.data)
+    console.log("axios-ing")
+    var results = [];
+    $("body").each(function(i,element){
 
-//       var scrapedContent = $(element).children("script").text();
+      var scrapedContent = $(element).children("script").text();
 
-//       var rawContent = scrapedContent.split('revision_id')[0].split('content')[1];
+      var rawContent = scrapedContent.split('revision_id')[0].split('content')[1];
 
-//       var relevantContent2;
+      var relevantContent2;
       
 
-//       function scrape() {
-//         console.log("scraping.....")
-//         var openingOfChord = "[ch]";
-//         var endingOfChord = "[\\/ch";
+      function scrape() {
+        console.log("scraping.....")
+        var openingOfChord = "[ch]";
+        var endingOfChord = "[\\/ch";
 
-//         var firstString = rawContent.split(openingOfChord)
-//       // firstString splits the massive string into an array of string. Each individual string begins with the chord we are trying to isolate
-//       var newestArray = [];
+        var firstString = rawContent.split(openingOfChord)
+      // firstString splits the massive string into an array of string. Each individual string begins with the chord we are trying to isolate
+      var newestArray = [];
 
-//       for (i = 0; i < firstString.length; i++){
-//         // this for loop is the process of isolating the chords from the lyrics.
-//             var modifiedString = firstString[i]
-//             // console.log(modifiedString)
-//             var strCopy = modifiedString.split(endingOfChord);
-//             // console.log(strCopy[0])
-//             newestArray.push(strCopy[0]);
+      for (i = 0; i < firstString.length; i++){
+        // this for loop is the process of isolating the chords from the lyrics.
+            var modifiedString = firstString[i]
+            // console.log(modifiedString)
+            var strCopy = modifiedString.split(endingOfChord);
+            // console.log(strCopy[0])
+            newestArray.push(strCopy[0]);
     
-//         }
+        }
 
-//         relevantContent2 = newestArray
+        relevantContent2 = newestArray
 
-//         console.log(relevantContent2)
+        console.log(relevantContent2)
 
-//       }
+      }
 
-//       scrape()
-
-
+      scrape()
 
 
 
 
-//     })
-//   })
-// }
+
+
+    })
+  })
+}
 
 
 
